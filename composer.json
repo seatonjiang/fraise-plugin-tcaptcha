@@ -1,0 +1,11 @@
+{
+  "name": "seatonjiang/fraise-plugin-tcaptcha",
+  "description": "For reducing malicious registrations and postings",
+  "keywords": [
+    "fraise",
+    "tcaptcha"
+  ],
+  "require": {
+    "tencentcloud/captcha": "*"
+  }
+}
