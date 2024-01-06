@@ -1,0 +1,79 @@
+name: Update Plugin Version
+
+on:
+  schedule:
+    - cron: 0 4 * * *
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Delete workflow
+        uses: Mattraks/delete-workflow-runs@v2.0.5
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          retain_days: 0
+          keep_minimum_runs: 0
+
+      - name: Checkout repo
+        uses: actions/checkout@v4.1.1
+
+      - name: Setup PHP Composer
+        uses: shivammathur/setup-php@2.27.1
+        with:
+          php-version: "8.2"
+          tools: composer
+
+      - name: Set current date env
+        run: echo "CURRENT_DATE=$(date +'%Y.%m.%d')" >> $GITHUB_ENV
+
+      - name: Get version of tencentcloud/captcha
+        run: echo "TENCENTCLOUD_SDK_VERSION_BEFORE=$(composer show tencentcloud/captcha | grep versions | awk '{print $NF}')" >> $GITHUB_ENV
+
+      - name: Update dependencies and plugin versions
+        run:
+          |
+          composer install
+          composer update
+          sed -i "s/Version: .*/Version: ${{ env.CURRENT_DATE }}/" fraise-plugin-tcaptcha.php
+
+      - name: Get version of tencentcloud/captcha
+        run: echo "TENCENTCLOUD_SDK_VERSION_AFTER=$(composer show tencentcloud/captcha | grep versions | awk '{print $NF}')" >> $GITHUB_ENV
+
+      - name: Compare versions
+        run:
+          |
+          if [[ "${{ env.TENCENTCLOUD_SDK_VERSION_BEFORE }}" == "${{ env.TENCENTCLOUD_SDK_VERSION_AFTER }}" ]]; then
+            echo "::error::Version of tencentcloud/captcha has not changed, aborting."
+            exit 1
+          fi
+
+      - name: Commit and push
+        uses: actions-js/push@v1.4
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          message: "feat: update of plugin version"
+
+      - name: Generate Changelog
+        run:
+          |
+          echo "### Changelog" > ${{ github.workspace }}-CHANGELOG.txt
+          echo "- 🚀 Upgrade \`tencentcloud/captcha\` version to \`${{ env.TENCENTCLOUD_SDK_VERSION_AFTER }}\`" >> ${{ github.workspace }}-CHANGELOG.txt
+          echo "- ✨ Upgrade the plugin version to \`${{ env.CURRENT_DATE }}\`" >> ${{ github.workspace }}-CHANGELOG.txt
+          echo "------" >> ${{ github.workspace }}-CHANGELOG.txt
+          echo "### 变更日志" >> ${{ github.workspace }}-CHANGELOG.txt
+          echo "- 🚀 升级依赖包 \`tencentcloud/captcha\` 的版本到 \`${{ env.TENCENTCLOUD_SDK_VERSION_AFTER }}\`" >> ${{ github.workspace }}-CHANGELOG.txt
+          echo "- ✨ 升级插件版本到 \`${{ env.CURRENT_DATE }}\`" >> ${{ github.workspace }}-CHANGELOG.txt
+
+      - name: Create zip file
+        run: zip -rq fraise-plugin-tcaptcha.zip ./ -x "README*" ".gitignore" ".github/*" ".git/*"
+
+      - name: Create Release
+        uses: softprops/action-gh-release@v0.1.15
+        with:
+          body_path: ${{ github.workspace }}-CHANGELOG.txt
+          name: ${{ env.CURRENT_DATE }}
+          tag_name: ${{ env.CURRENT_DATE }}
+          token: ${{ secrets.GITHUB_TOKEN }}
+          files: fraise-plugin-tcaptcha.zip
