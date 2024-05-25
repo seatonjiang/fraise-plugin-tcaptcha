@@ -1,6 +1,6 @@
 {
   "name": "seatonjiang/fraise-plugin-tcaptcha",
-  "description": "For reducing malicious registrations and postings",
+  "description": "Reducing malicious registrations and postings",
   "keywords": [
     "fraise",
     "tcaptcha"
