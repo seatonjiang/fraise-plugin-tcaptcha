@@ -622,23 +622,23 @@
         },
         {
             "name": "tencentcloud/captcha",
-            "version": "3.0.1153",
-            "version_normalized": "3.0.1153.0",
+            "version": "3.0.1154",
+            "version_normalized": "3.0.1154.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/tencentcloud-sdk-php/captcha.git",
-                "reference": "53b276e9c7aa7e60bea433762a9709024c2a51f6"
+                "reference": "976590cf60d403d545b03ea9b57d99bbd776bf47"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/tencentcloud-sdk-php/captcha/zipball/53b276e9c7aa7e60bea433762a9709024c2a51f6",
-                "reference": "53b276e9c7aa7e60bea433762a9709024c2a51f6",
+                "url": "https://api.github.com/repos/tencentcloud-sdk-php/captcha/zipball/976590cf60d403d545b03ea9b57d99bbd776bf47",
+                "reference": "976590cf60d403d545b03ea9b57d99bbd776bf47",
                 "shasum": ""
             },
             "require": {
-                "tencentcloud/common": "3.0.1153"
+                "tencentcloud/common": "3.0.1154"
             },
-            "time": "2024-05-30T20:20:57+00:00",
+            "time": "2024-06-02T20:22:05+00:00",
             "type": "library",
             "installation-source": "dist",
             "autoload": {
@@ -662,30 +662,30 @@
             "homepage": "https://github.com/tencentcloud-sdk-php/captcha",
             "support": {
                 "issues": "https://github.com/tencentcloud-sdk-php/captcha/issues",
-                "source": "https://github.com/tencentcloud-sdk-php/captcha/tree/3.0.1153"
+                "source": "https://github.com/tencentcloud-sdk-php/captcha/tree/3.0.1154"
             },
             "install-path": "../tencentcloud/captcha"
         },
         {
             "name": "tencentcloud/common",
-            "version": "3.0.1153",
-            "version_normalized": "3.0.1153.0",
+            "version": "3.0.1154",
+            "version_normalized": "3.0.1154.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/tencentcloud-sdk-php/common.git",
-                "reference": "a4631802c62ab8d9854abab7ecb050990ddab295"
+                "reference": "0d125fb00a8204b63ab6dd7c27110a34441e6f64"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/tencentcloud-sdk-php/common/zipball/a4631802c62ab8d9854abab7ecb050990ddab295",
-                "reference": "a4631802c62ab8d9854abab7ecb050990ddab295",
+                "url": "https://api.github.com/repos/tencentcloud-sdk-php/common/zipball/0d125fb00a8204b63ab6dd7c27110a34441e6f64",
+                "reference": "0d125fb00a8204b63ab6dd7c27110a34441e6f64",
                 "shasum": ""
             },
             "require": {
                 "guzzlehttp/guzzle": "^6.3||^7.0",
                 "php": ">=5.6.0"
             },
-            "time": "2024-05-30T20:31:47+00:00",
+            "time": "2024-06-02T20:33:04+00:00",
             "type": "library",
             "installation-source": "dist",
             "autoload": {
@@ -709,7 +709,7 @@
             "homepage": "https://github.com/tencentcloud-sdk-php/common",
             "support": {
                 "issues": "https://github.com/tencentcloud-sdk-php/common/issues",
-                "source": "https://github.com/tencentcloud-sdk-php/common/tree/3.0.1153"
+                "source": "https://github.com/tencentcloud-sdk-php/common/tree/3.0.1154"
             },
             "install-path": "../tencentcloud/common"
         }
