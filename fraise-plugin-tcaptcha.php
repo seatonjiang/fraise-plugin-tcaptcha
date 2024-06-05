@@ -17,6 +17,6 @@ if (!defined('ABSPATH')) {
 
 if (!has_action('fraise-plugin-tcaptcha')) {
     add_action('fraise-plugin-tcaptcha', function () {
-        require_once dirname(__FILE__) . '/vendor/autoload.php';
+        require_once plugin_dir_path(__FILE__) . '/vendor/autoload.php';
     });
 }
