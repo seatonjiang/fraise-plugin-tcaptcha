@@ -33,8 +33,8 @@ class ComposerStaticInit74868df1bcc30f652ae446d82fe90b1d
     public static $prefixDirsPsr4 = array (
         'TencentCloud\\' => 
         array (
-            0 => __DIR__ . '/..' . '/tencentcloud/captcha/src/TencentCloud',
-            1 => __DIR__ . '/..' . '/tencentcloud/common/src/TencentCloud',
+            0 => __DIR__ . '/..' . '/tencentcloud/common/src/TencentCloud',
+            1 => __DIR__ . '/..' . '/tencentcloud/captcha/src/TencentCloud',
         ),
         'Psr\\Http\\Message\\' => 
         array (
