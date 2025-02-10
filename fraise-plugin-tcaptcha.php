@@ -3,7 +3,7 @@
 /**
  * Plugin Name: Fraise - 人机验证工具包
  * Description: 使用腾讯云天御验证码所需的工具包，可有效减少恶意批量注册、水军刷帖、恶意灌水等问题。
- * Version: 2025.02.07
+ * Version: 2025.02.10
  * Plugin URI: https://github.com/seatonjiang/fraise-plugin-tcaptcha
  * Author: Seaton Jiang
  * Author URI: https://seatonjiang.com
